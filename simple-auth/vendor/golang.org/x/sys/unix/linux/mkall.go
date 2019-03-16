@@ -1,6 +1,6 @@
 // Copyright 2017 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// 
 
 // linux/mkall.go - Generates all Linux zsysnum, zsyscall, zerror, and ztype
 // files for all Linux architectures supported by the go compiler. See

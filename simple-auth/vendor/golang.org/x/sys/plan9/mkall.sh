@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Copyright 2009 The Go Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style
-# license that can be found in the LICENSE file.
+# 
 
 # The plan9 package provides access to the raw system call
 # interface of the underlying operating system.  Porting Go to

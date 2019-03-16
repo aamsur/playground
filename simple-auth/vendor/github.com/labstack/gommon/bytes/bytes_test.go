@@ -86,12 +86,6 @@ func TestBytesParse(t *testing.T) {
 		assert.Equal(t, int64(515), b)
 	}
 
-	// B with space
-	b, err = Parse("515 B")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(515), b)
-	}
-
 	// KB
 	b, err = Parse("12.25KB")
 	if assert.NoError(t, err) {
@@ -106,20 +100,6 @@ func TestBytesParse(t *testing.T) {
 		assert.Equal(t, int64(12288), b)
 	}
 
-	// KB with space
-	b, err = Parse("12.25 KB")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(12544), b)
-	}
-	b, err = Parse("12 KB")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(12288), b)
-	}
-	b, err = Parse("12 K")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(12288), b)
-	}
-
 	// MB
 	b, err = Parse("2MB")
 	if assert.NoError(t, err) {
@@ -128,16 +108,6 @@ func TestBytesParse(t *testing.T) {
 	b, err = Parse("2M")
 	if assert.NoError(t, err) {
 		assert.Equal(t, int64(2097152), b)
-	}
-
-	// GB with space
-	b, err = Parse("6 GB")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(6442450944), b)
-	}
-	b, err = Parse("6 G")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(6442450944), b)
 	}
 
 	// GB
@@ -160,16 +130,6 @@ func TestBytesParse(t *testing.T) {
 		assert.Equal(t, int64(5497558138880), b)
 	}
 
-	// TB with space
-	b, err = Parse("5 TB")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(5497558138880), b)
-	}
-	b, err = Parse("5 T")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(5497558138880), b)
-	}
-
 	// PB
 	b, err = Parse("9PB")
 	if assert.NoError(t, err) {
@@ -180,32 +140,12 @@ func TestBytesParse(t *testing.T) {
 		assert.Equal(t, int64(10133099161583616), b)
 	}
 
-	// PB with space
-	b, err = Parse("9 PB")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(10133099161583616), b)
-	}
-	b, err = Parse("9 P")
-	if assert.NoError(t, err) {
-		assert.Equal(t, int64(10133099161583616), b)
-	}
-
 	// EB
 	b, err = Parse("8EB")
 	if assert.NoError(t, err) {
 		assert.True(t, math.MaxInt64 == b-1)
 	}
 	b, err = Parse("8E")
-	if assert.NoError(t, err) {
-		assert.True(t, math.MaxInt64 == b-1)
-	}
-
-	// EB with spaces
-	b, err = Parse("8 EB")
-	if assert.NoError(t, err) {
-		assert.True(t, math.MaxInt64 == b-1)
-	}
-	b, err = Parse("8 E")
 	if assert.NoError(t, err) {
 		assert.True(t, math.MaxInt64 == b-1)
 	}

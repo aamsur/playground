@@ -1,6 +1,6 @@
 // Copyright 2012 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// 
 
 // This code can be compiled and used to test the otr package against libotr.
 // See otr_test.go.

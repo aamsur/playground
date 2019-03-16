@@ -1,6 +1,6 @@
 // Copyright 2013 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// 
 
 // We have an implementation in amd64 assembly so this code is only run on
 // non-amd64 platforms. The amd64 assembly does not support gccgo.

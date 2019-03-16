@@ -1,18 +1,17 @@
-// Copyright 2017 PT. Qasico Teknologi Indonesia. All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
+// 
+// 
+// 
 
 package auth
 
 import (
 	"errors"
 	"time"
-
 	"github.com/aamsur/playground/simple-auth/datastore/model"
 
+	"git.qasico.com/cuxs/orm"
 	"git.qasico.com/cuxs/cuxs"
 	"github.com/dgrijalva/jwt-go"
-	"fmt"
 )
 
 // SessionData structur data current user logged in.
@@ -71,7 +70,6 @@ func UserSession(ctx *cuxs.Context) (*SessionData, error) {
 
 		sd, _ := StartSession(userID, token)
 
-		fmt.Println(c["iat"], sd.User.LastLogoutAt)
 		if c.VerifyIssuedAt(sd.User.LastLogoutAt.Unix(), true) {
 			return nil, errors.New("expired jwt token")
 		}
@@ -107,4 +105,15 @@ func Logout(ctx *cuxs.Context) (*model.User, error) {
 	}
 
 	return nil, errors.New("invalid jwt token")
+}
+
+// GetUsername get data user by username
+func GetUsername(username string) (m *model.User, e error) {
+
+	o := orm.NewOrm()
+	if e = o.Raw("select * from user where username = ?", username).QueryRow(&m); e == nil {
+		return m, nil
+	}
+
+	return nil, e
 }
